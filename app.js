@@ -39,4 +39,28 @@ expanseCalculation.addEventListener("click", function () {
 	totalBalance.innerText = calculatetotalBalance;
 });
 
+savingCalculation.addEventListener("click", function () {
+	let mainIncome = parseInt(incomeInput.value);
+	let savingAmount = parseInt(savingInput.value);
+
+	if (isNaN(mainIncome) || mainIncome < 0) {
+		alert("Please input valid amount of money in number format");
+	} else {
+		let calculateTotalExpanse =
+			parseInt(foodExpense.value) +
+			parseInt(rentExpense.value) +
+			parseInt(clothExpense.value);
+
+		let calculatetotalBalance = mainIncome - calculateTotalExpanse;
+
+		const savingPersantage = (savingAmount / 100) * mainIncome;
+
+		let remainTotalBalance = calculatetotalBalance - savingPersantage;
+
+		// console.log(savingPersantage);
+		savingAmountPercentage.innerText = savingPersantage;
+		totalRemainingBalance.innerText = remainTotalBalance;
+	}
+});
+
 
