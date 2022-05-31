@@ -20,23 +20,29 @@ const totalRemainingBalance = document.getElementById("remaining-balance");
 const expanseCalculation = document.getElementById("calculation-btn");
 const savingCalculation = document.getElementById("saving-btn");
 
-
-
 expanseCalculation.addEventListener("click", function () {
-	let mainIncome = parseInt(incomeInput.value);
+	const mainIncome = parseInt(incomeInput.value);
+	const foodCost = parseInt(foodExpense.value);
+	const rentCost = parseInt(rentExpense.value);
+	const clothCost = parseInt(clothExpense.value);
 
-	let calculateTotalExpanse =
-		parseInt(foodExpense.value) +
-		parseInt(rentExpense.value) +
-		parseInt(clothExpense.value);
+	if (isNaN(mainIncome) || mainIncome < 0) {
+		alert("Please input valid amount of money in number format");
+	} else if (isNaN(foodCost) || foodCost < 0) {
+		alert("Food input valid amount of money in number format");
+	} else if (isNaN(rentCost) || rentCost < 0) {
+		alert("Rent input valid amount of money in number format");
+	} else if (isNaN(clothCost) || clothCost < 0) {
+		alert("Cloth input valid amount of money in number format");
+	} else {
+		let calculateTotalExpanse = foodCost + rentCost + clothCost;
+		
+		let calculatetotalBalance = mainIncome - calculateTotalExpanse;
+		totalExpense.innerText = calculateTotalExpanse;
+		totalBalance.innerText = calculatetotalBalance;
+	}
 
-	let calculatetotalBalance = mainIncome - calculateTotalExpanse;
-
-	// console.log(  calculatetotalBalance)
-
-	// console.log('Total Expans', typeof totalExpanse)
-	totalExpense.innerText = calculateTotalExpanse;
-	totalBalance.innerText = calculatetotalBalance;
+	
 });
 
 savingCalculation.addEventListener("click", function () {
@@ -62,5 +68,3 @@ savingCalculation.addEventListener("click", function () {
 		totalRemainingBalance.innerText = remainTotalBalance;
 	}
 });
-
-
