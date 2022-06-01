@@ -5,6 +5,10 @@ const rentExpense = document.getElementById("rent-expense");
 const clothExpense = document.getElementById("cloth-expense");
 const savingInput = document.getElementById("saving-input");
 
+// Error Message
+
+const errorMessage = document.getElementById("error-message");
+
 // total expanse
 const totalExpense = document.getElementById("total-expense");
 // Total balance
@@ -27,22 +31,42 @@ expanseCalculation.addEventListener("click", function () {
 	const clothCost = parseInt(clothExpense.value);
 
 	if (isNaN(mainIncome) || mainIncome < 0) {
-		alert("Please input valid amount of money in number format");
+		let span = document.createElement("span");
+		span.innerText = "Please input valid amount of money in number format";
+		span.style.backgroundColor = "red";
+		errorMessage.appendChild(span);
+		// alert("Please input valid amount of money in number format");
 	} else if (isNaN(foodCost) || foodCost < 0) {
-		alert("Food input valid amount of money in number format");
+		let span = document.createElement("span");
+		span.innerText = "Please input valid amount of money in number format";
+		span.style.backgroundColor = "red";
+		errorMessage.appendChild(span);
 	} else if (isNaN(rentCost) || rentCost < 0) {
-		alert("Rent input valid amount of money in number format");
+		let span = document.createElement("span");
+		span.innerText = "Please input valid amount of money in number format";
+		span.style.backgroundColor = "red";
+		errorMessage.appendChild(span);
 	} else if (isNaN(clothCost) || clothCost < 0) {
-		alert("Cloth input valid amount of money in number format");
+		let span = document.createElement("span");
+		span.innerText = "Please input valid amount of money in number format";
+		span.style.backgroundColor = "red";
+		errorMessage.appendChild(span);
 	} else {
 		let calculateTotalExpanse = foodCost + rentCost + clothCost;
-		
+
+		if (calculateTotalExpanse > mainIncome) {
+			
+			let span = document.createElement("span");
+			span.innerText =
+				"Please input valid amount of money in number format";
+			span.style.backgroundColor = "red";
+			errorMessage.appendChild(span);
+		}
+
 		let calculatetotalBalance = mainIncome - calculateTotalExpanse;
 		totalExpense.innerText = calculateTotalExpanse;
 		totalBalance.innerText = calculatetotalBalance;
 	}
-
-	
 });
 
 savingCalculation.addEventListener("click", function () {
