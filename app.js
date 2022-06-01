@@ -102,8 +102,8 @@ savingCalculation.addEventListener("click", function () {
 			let remainTotalBalance = calculatetotalBalance - savingPersantage;
 
 		
-			savingAmountPercentage.innerText = savingPersantage;
-			totalRemainingBalance.innerText = remainTotalBalance;
+			savingAmountPercentage.innerText = parseInt(savingPersantage);
+			totalRemainingBalance.innerText =parseInt( remainTotalBalance);
 		}
 
 		
