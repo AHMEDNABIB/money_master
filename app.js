@@ -9,7 +9,6 @@ const savingInput = document.getElementById("saving-input");
 
 const errorMessage = document.getElementById("error-message");
 
-
 // total expanse
 const totalExpense = document.getElementById("total-expense");
 // Total balance
@@ -25,45 +24,63 @@ const totalRemainingBalance = document.getElementById("remaining-balance");
 const expanseCalculation = document.getElementById("calculation-btn");
 const savingCalculation = document.getElementById("saving-btn");
 
+function functionErrorMessage(text) {
+	console.log(' message', text)
+	let span = document.createElement("span");
+	span.innerText = text;
+	span.style.backgroundColor = "red";
+	errorMessage.appendChild(span);
+}
+
 expanseCalculation.addEventListener("click", function () {
 	const mainIncome = parseInt(incomeInput.value);
 
-	console.log(mainIncome);
+	
 	const foodCost = parseInt(foodExpense.value);
 	const rentCost = parseInt(rentExpense.value);
 	const clothCost = parseInt(clothExpense.value);
 
 	if (isNaN(mainIncome) || mainIncome < 0) {
-		let span = document.createElement("span");
-		span.innerText = "Please input valid amount of money in number format";
-		span.style.backgroundColor = "red";
-		errorMessage.appendChild(span);
-		// alert("Please input valid amount of money in number format");
+		// let span = document.createElement("span");
+		// span.innerText = "Please input valid amount of money in number format";
+		// span.style.backgroundColor = "red";
+		// errorMessage.appendChild(span);
+		functionErrorMessage("Please input valid amount of money in number format");
 	} else if (isNaN(foodCost) || foodCost < 0) {
-		let span = document.createElement("span");
-		span.innerText = "Please input valid amount of money in number format";
-		span.style.backgroundColor = "red";
-		errorMessage.appendChild(span);
+		// let span = document.createElement("span");
+		// span.innerText = "Please input valid amount of money in number format";
+		// span.style.backgroundColor = "red";
+		// errorMessage.appendChild(span);
+		functionErrorMessage(
+			"Please input valid amount of money in number format"
+		);
 	} else if (isNaN(rentCost) || rentCost < 0) {
-		let span = document.createElement("span");
-		span.innerText = "Please input valid amount of money in number format";
-		span.style.backgroundColor = "red";
-		errorMessage.appendChild(span);
+		// let span = document.createElement("span");
+		// span.innerText = "Please input valid amount of money in number format";
+		// span.style.backgroundColor = "red";
+		// errorMessage.appendChild(span);
+		functionErrorMessage(
+			"Please input valid amount of money in number format"
+		);
 	} else if (isNaN(clothCost) || clothCost < 0) {
-		let span = document.createElement("span");
-		span.innerText = "Please input valid amount of money in number format";
-		span.style.backgroundColor = "red";
-		errorMessage.appendChild(span);
+		// let span = document.createElement("span");
+		// span.innerText = "Please input valid amount of money in number format";
+		// span.style.backgroundColor = "red";
+		// errorMessage.appendChild(span);
+		functionErrorMessage(
+			"Please input valid amount of money in number format"
+		);
 	} else {
 		let calculateTotalExpanse = foodCost + rentCost + clothCost;
 
 		console.log(calculateTotalExpanse);
 
 		if (calculateTotalExpanse > mainIncome) {
-			let span = document.createElement("span");
-			span.innerText = "Your Expense is greater than your income";
-			span.style.backgroundColor = "red";
-			errorMessage.appendChild(span);
+			// let span = document.createElement("span");
+			// span.innerText = "Your Expense is greater than your income";
+			// span.style.backgroundColor = "red";
+			// errorMessage.appendChild(span);
+			functionErrorMessage("Your Expense is greater than your income");
 		} else {
 			let calculatetotalBalance = mainIncome - calculateTotalExpanse;
 			totalExpense.innerText = calculateTotalExpanse;
@@ -77,7 +94,9 @@ savingCalculation.addEventListener("click", function () {
 	let savingAmount = parseInt(savingInput.value);
 
 	if (isNaN(mainIncome) || mainIncome < 0) {
-		alert("Please input valid amount of money in number format");
+		functionErrorMessage(
+			"Please input valid amount of money in number format"
+		);
 	} else {
 		let calculateTotalExpanse =
 			parseInt(foodExpense.value) +
@@ -89,16 +108,19 @@ savingCalculation.addEventListener("click", function () {
 		const savingPersantage = (savingAmount / 100) * mainIncome;
 
 		if (savingPersantage > calculatetotalBalance) {
-			let span = document.createElement("span");
-			span.innerText = "You donot have enough balance";
-			span.style.backgroundColor = "red";
-			errorMessage.appendChild(span);
+			// let span = document.createElement("span");
+			// span.innerText = "You donot have enough balance";
+			// span.style.backgroundColor = "red";
+			// errorMessage.appendChild(span);functionErrorMessage("Please input valid amount of money in number format");
+			functionErrorMessage("You donot have enough balance");
+		} else {
+			let remainTotalBalance = calculatetotalBalance - savingPersantage;
+
+			// console.log(savingPersantage);
+			savingAmountPercentage.innerText = savingPersantage;
+			totalRemainingBalance.innerText = remainTotalBalance;
 		}
 
-		let remainTotalBalance = calculatetotalBalance - savingPersantage;
-
-		// console.log(savingPersantage);
-		savingAmountPercentage.innerText = savingPersantage;
-		totalRemainingBalance.innerText = remainTotalBalance;
+		
 	}
 });
