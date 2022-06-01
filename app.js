@@ -47,26 +47,17 @@ expanseCalculation.addEventListener("click", function () {
 		// errorMessage.appendChild(span);
 		functionErrorMessage("Please input valid amount of money in number format");
 	} else if (isNaN(foodCost) || foodCost < 0) {
-		// let span = document.createElement("span");
-		// span.innerText = "Please input valid amount of money in number format";
-		// span.style.backgroundColor = "red";
-		// errorMessage.appendChild(span);
+		
 		functionErrorMessage(
 			"Please input valid amount of money in number format"
 		);
 	} else if (isNaN(rentCost) || rentCost < 0) {
-		// let span = document.createElement("span");
-		// span.innerText = "Please input valid amount of money in number format";
-		// span.style.backgroundColor = "red";
-		// errorMessage.appendChild(span);
+		
 		functionErrorMessage(
 			"Please input valid amount of money in number format"
 		);
 	} else if (isNaN(clothCost) || clothCost < 0) {
-		// let span = document.createElement("span");
-		// span.innerText = "Please input valid amount of money in number format";
-		// span.style.backgroundColor = "red";
-		// errorMessage.appendChild(span);
+		
 		functionErrorMessage(
 			"Please input valid amount of money in number format"
 		);
@@ -76,10 +67,7 @@ expanseCalculation.addEventListener("click", function () {
 		console.log(calculateTotalExpanse);
 
 		if (calculateTotalExpanse > mainIncome) {
-			// let span = document.createElement("span");
-			// span.innerText = "Your Expense is greater than your income";
-			// span.style.backgroundColor = "red";
-			// errorMessage.appendChild(span);
+			
 			functionErrorMessage("Your Expense is greater than your income");
 		} else {
 			let calculatetotalBalance = mainIncome - calculateTotalExpanse;
@@ -108,15 +96,12 @@ savingCalculation.addEventListener("click", function () {
 		const savingPersantage = (savingAmount / 100) * mainIncome;
 
 		if (savingPersantage > calculatetotalBalance) {
-			// let span = document.createElement("span");
-			// span.innerText = "You donot have enough balance";
-			// span.style.backgroundColor = "red";
-			// errorMessage.appendChild(span);functionErrorMessage("Please input valid amount of money in number format");
+			
 			functionErrorMessage("You donot have enough balance");
 		} else {
 			let remainTotalBalance = calculatetotalBalance - savingPersantage;
 
-			// console.log(savingPersantage);
+		
 			savingAmountPercentage.innerText = savingPersantage;
 			totalRemainingBalance.innerText = remainTotalBalance;
 		}
