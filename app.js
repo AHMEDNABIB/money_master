@@ -9,6 +9,7 @@ const savingInput = document.getElementById("saving-input");
 
 const errorMessage = document.getElementById("error-message");
 
+
 // total expanse
 const totalExpense = document.getElementById("total-expense");
 // Total balance
@@ -26,6 +27,8 @@ const savingCalculation = document.getElementById("saving-btn");
 
 expanseCalculation.addEventListener("click", function () {
 	const mainIncome = parseInt(incomeInput.value);
+
+	console.log(mainIncome);
 	const foodCost = parseInt(foodExpense.value);
 	const rentCost = parseInt(rentExpense.value);
 	const clothCost = parseInt(clothExpense.value);
@@ -54,18 +57,18 @@ expanseCalculation.addEventListener("click", function () {
 	} else {
 		let calculateTotalExpanse = foodCost + rentCost + clothCost;
 
+		console.log(calculateTotalExpanse);
+
 		if (calculateTotalExpanse > mainIncome) {
-			
 			let span = document.createElement("span");
-			span.innerText =
-				"Please input valid amount of money in number format";
+			span.innerText = "Your Expense is greater than your income";
 			span.style.backgroundColor = "red";
 			errorMessage.appendChild(span);
+		} else {
+			let calculatetotalBalance = mainIncome - calculateTotalExpanse;
+			totalExpense.innerText = calculateTotalExpanse;
+			totalBalance.innerText = calculatetotalBalance;
 		}
-
-		let calculatetotalBalance = mainIncome - calculateTotalExpanse;
-		totalExpense.innerText = calculateTotalExpanse;
-		totalBalance.innerText = calculatetotalBalance;
 	}
 });
 
@@ -84,6 +87,13 @@ savingCalculation.addEventListener("click", function () {
 		let calculatetotalBalance = mainIncome - calculateTotalExpanse;
 
 		const savingPersantage = (savingAmount / 100) * mainIncome;
+
+		if (savingPersantage > calculatetotalBalance) {
+			let span = document.createElement("span");
+			span.innerText = "You donot have enough balance";
+			span.style.backgroundColor = "red";
+			errorMessage.appendChild(span);
+		}
 
 		let remainTotalBalance = calculatetotalBalance - savingPersantage;
 
